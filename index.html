@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="format-detection" content="telephone=no">
   <meta name="theme-color" content="#082d3b">
   <title>Auckland Maritime Information</title>
   <style>
@@ -214,6 +215,15 @@
     .payment-row dt { margin: 0 0 4px; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
     .payment-row dd { margin: 0; font-size: 15px; font-weight: 750; line-height: 1.45; overflow-wrap: anywhere; }
 
+    /* Prevent mobile browsers from styling account/reference numbers as phone links. */
+    a[href^="tel"] {
+      color: inherit !important;
+      text-decoration: none !important;
+      pointer-events: none;
+      cursor: default;
+    }
+
+
     @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
   </style>
 </head>
@@ -283,9 +293,9 @@
         <h3 id="paymentDetails" style="margin:0 0 10px; font-size:18px; line-height:1.35; color:#082d3b;">Payment details</h3>
         <p style="margin:0 0 14px; font-size:15px; line-height:1.55;"><strong>Payment of $30 required within 7 days</strong></p>
         <dl class="payment-list" style="margin-top:0;">
-          <div class="payment-row"><dt>Account number</dt><dd>02 0192 0122888 03</dd></div>
+          <div class="payment-row"><dt>Account number</dt><dd class="no-phone" data-type="account-number">02 0192 0122888 03</dd></div>
           <div class="payment-row"><dt>Account name</dt><dd>Auckland Transport</dd></div>
-          <div class="payment-row"><dt>Reference</dt><dd>50024927 PFD (name)</dd></div>
+          <div class="payment-row"><dt>Reference</dt><dd class="no-phone" data-type="payment-reference">50024927 PFD (name)</dd></div>
         </dl>
       </section>
     </div>
